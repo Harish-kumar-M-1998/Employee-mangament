@@ -7,7 +7,13 @@ const employeeRoutes = require('./routes/employeeRoutes');
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: 'https://emp-manage-fe.netlify.app', // Allow your Netlify frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+  credentials: true, // Allow credentials (if needed)
+};
+// Middleware
+app.use(cors(corsOptions));
 
 // MongoDB connection
 mongoose.connect('mongodb+srv://harishmano98:Harish%402024@harish-mongo.uf15eex.mongodb.net/EmployeeDB' );
